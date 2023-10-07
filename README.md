@@ -14,7 +14,7 @@ npm install
 - **Run system migrations**
 
 ```shell
-  php artisan system:migrate
+php artisan system:migrate
 ```
 
 ### Run Application
