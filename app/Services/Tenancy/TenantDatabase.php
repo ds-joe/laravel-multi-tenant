@@ -6,19 +6,19 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Artisan;
 
-class TenantDatabase extends Tenant
+class TenantDatabase extends TenantHelpers
 {
   # Migrations information
-  protected string $systemMigrationsPath = "database/migrations/system";
-  protected string $tenantMigrationsPath = "database/migrations/tenant";
+  private string $systemMigrationsPath = "database/migrations/system";
+  private string $tenantMigrationsPath = "database/migrations/tenant";
 
   # Seeder Information
-  protected string $systemSeedersTargetClass = "DatabaseSystemSeeder";
-  protected string $tenantSeedersTargetClass = "DatabaseTenantSeeder";
+  private string $systemSeedersTargetClass = "DatabaseSystemSeeder";
+  private string $tenantSeedersTargetClass = "DatabaseTenantSeeder";
 
   # Connection information
-  protected string $tenantConnectionName = "tenant";
-  protected string $systemConnectionName = "system";
+  private string $tenantConnectionName = "tenant";
+  private string $systemConnectionName = "system";
 
   /**
    * @desc This method using to switch from default database to a tenant database.

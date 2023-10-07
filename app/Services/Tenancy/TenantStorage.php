@@ -8,12 +8,12 @@ use Illuminate\Http\File as HttpFile;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 
-class TenantStorage extends Tenant
+class TenantStorage extends TenantHelpers
 {
   # Storage Disks
-  public array $tenantDisk = [];
-  public array $systemDisk = [];
-  public array $publicDisk = [];
+  private array $tenantDisk = [];
+  private array $systemDisk = [];
+  private array $publicDisk = [];
 
   public function __construct()
   {
@@ -52,7 +52,6 @@ class TenantStorage extends Tenant
   {
     return Storage::disk($this->tenantDisk['name'])->fileExists("{$this->tenantAliasName}{$id}/{$fileUrl}");
   }
-
 
   /**
    * @desc This method using to create a new tenant directory.

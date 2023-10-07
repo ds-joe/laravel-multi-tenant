@@ -34,6 +34,7 @@ npm start
 ### Information
 
 - you will find database plan in `public/database-plan.drawio`
+- [permissions & roles documentation](https://spatie.be/docs/laravel-permission/v5/introduction)
 
 ### Tenant Utilities
 
