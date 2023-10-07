@@ -177,9 +177,7 @@ return [
   */
 
   'aliases' => Facade::defaultAliases()->merge([
-    'Tenant' => \App\Services\Tenancy\Facade\TenantFacade::class,
-    'TenantStorage' => \App\Services\Tenancy\Facade\TenantStorageFacade::class,
-    'TenantDatabase' => \App\Services\Tenancy\Facade\TenantDatabaseFacade::class
+    'Tenant' => \App\Services\Tenancy\TenantFacade::class,
   ])->toArray(),
 
 ];

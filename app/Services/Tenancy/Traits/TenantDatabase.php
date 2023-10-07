@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Services\Tenancy;
+namespace App\Services\Tenancy\Traits;
 
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 
-class TenantDatabase extends TenantHelpers
+trait TenantDatabase
 {
+  use TenantHelpers;
+
   # Migrations information
   private string $systemMigrationsPath = "database/migrations/system";
   private string $tenantMigrationsPath = "database/migrations/tenant";
@@ -21,15 +23,31 @@ class TenantDatabase extends TenantHelpers
   private string $systemConnectionName = "system";
 
   /**
+   * @desc This method using to check if a tenant database exists or not.
+   * @param int $id
+   * @return bool
+   */
+  public function tenantDatabaseExists(int $id): bool
+  {
+    $databaseExists = false;
+    try {
+      DB::statement("SELECT 1 FROM information_schema.schemata WHERE schema_name = '{$this->tenantAliasName}{$id}'");
+      $databaseExists = true;
+    } catch (PDOException $e) {
+    }
+    return $databaseExists;
+  }
+
+  /**
    * @desc This method using to switch from default database to a tenant database.
-   * @param string|int $db_id
+   * @param int $id tenant id
    * @return void
    */
-  public function switchToTenantConnection(string|int $db_id): void
+  public function switchToTenantConnection(int $id): void
   {
     DB::purge($this->systemConnectionName);
     DB::purge($this->tenantConnectionName);
-    Config::set("database.connections.{$this->tenantConnectionName}.database", "{$this->tenantAliasName}{$db_id}");
+    Config::set("database.connections.{$this->tenantConnectionName}.database", "{$this->tenantAliasName}{$id}");
     DB::connection($this->tenantConnectionName)->reconnect();
     DB::setDefaultConnection($this->tenantConnectionName);
   }
@@ -62,12 +80,23 @@ class TenantDatabase extends TenantHelpers
    * @param string $db_name
    * @return float
    */
-  public function getDatabaseSize(string $db_name): float|int
+  public function getDatabaseSize(string $db_name): float
   {
     $query = "SELECT SUM(data_length) AS database_size FROM information_schema.tables WHERE table_schema = '$db_name'";
     $databaseSize = DB::selectOne($query)->database_size;
     return $this->convertSizeToMB($databaseSize);
   }
+
+  /**
+   * @desc This method using to get tenant database size.
+   * @param int $id tenant id
+   * @return float
+   */
+  public function getTenantDatabaseSize(int $id): float
+  {
+    return $this->getDatabaseSize("{$this->tenantAliasName}{$id}");
+  }
+
 
   /**
    * @desc This method using to run a tenant migrations. 703125 703125
@@ -89,10 +118,10 @@ class TenantDatabase extends TenantHelpers
 
   /**
    * @desc This method using to create tenant database.
-   * @param string|int $id
+   * @param int $id
    * @return void
    */
-  public function createNewCompanyDatabase(string|int $id): void
+  public function createTenantDatabase(int $id): void
   {
     DB::statement("CREATE DATABASE IF NOT EXISTS {$this->tenantAliasName}{$id}");
   }

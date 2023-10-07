@@ -1,15 +1,18 @@
 <?php
 
-namespace App\Services\Tenancy;
+namespace App\Services\Tenancy\Traits;
 
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File as HttpFile;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use League\Flysystem\FilesystemException;
 
-class TenantStorage extends TenantHelpers
+trait TenantStorage
 {
+  use TenantHelpers;
+
   # Storage Disks
   private array $tenantDisk = [];
   private array $systemDisk = [];
@@ -23,11 +26,11 @@ class TenantStorage extends TenantHelpers
   }
 
   /**
-   * @desc This method using to check if tenant directory is exists.
-   * @param int|string $id
+   * @desc This method using to check if tenant directory is existing.
+   * @param int $id
    * @return bool
    */
-  public function tenantDirectoryExists(int|string $id): bool
+  public function tenantStorageExists(int $id): bool
   {
     return Storage::disk($this->tenantDisk['name'])->exists("{$this->tenantAliasName}{$id}");
   }
@@ -44,33 +47,34 @@ class TenantStorage extends TenantHelpers
 
   /**
    * @desc This method using to check if tenant file exists or not.
-   * @param int|string $id tenant id
+   * @param int $id tenant id
    * @param string $fileUrl
    * @return bool
    */
-  public function tenantFileExists(int|string $id, string $fileUrl): bool
+  public function tenantFileExists(int $id, string $fileUrl): bool
   {
     return Storage::disk($this->tenantDisk['name'])->fileExists("{$this->tenantAliasName}{$id}/{$fileUrl}");
   }
 
   /**
    * @desc This method using to create a new tenant directory.
-   * @param int|string $id
+   * @param int $id
    * @return void
+   * @throws FilesystemException
    */
-  public function newTenantDirectory(string|int $id): void
+  public function createTenantStorage(int $id): void
   {
-    if (!$this->tenantDirectoryExists($id)) {
+    if (!$this->tenantStorageExists($id)) {
       Storage::disk($this->tenantDisk['name'])->createDirectory("{$this->tenantAliasName}{$id}");
     }
   }
 
   /**
    * @desc This method using to get tenant directory size in (Mega Byte)  :).
-   * @param string|int $id
-   * @return float|int
+   * @param int $id
+   * @return float
    */
-  public function getTenantSize(int|string $id)
+  public function getTenantSize(int $id): float
   {
     $totalSize = 0;
     $directories = Storage::disk($this->tenantDisk['name'])->directories("{$this->tenantAliasName}{$id}", true);
@@ -80,12 +84,12 @@ class TenantStorage extends TenantHelpers
         $totalSize += Storage::disk($this->tenantDisk['name'])->size($file);
       }
     }
-    return $this->convertSizeToMB($totalSize);
+    return (float)$this->convertSizeToMB($totalSize);
   }
 
   /**
-   * @desc This method using to put files to tenant directory.
-   * @param string|int $id tenant id
+   * @desc This method using to put files to tenant storage.
+   * @param int $id tenant id
    * @param string $path
    * @param UploadedFile|HttpFile|array|string|null $file
    * @param array|string|null $name
@@ -97,23 +101,23 @@ class TenantStorage extends TenantHelpers
   }
 
   /**
-   * @desc This method using to remove a directory from tenant files.
-   * @param int|string $id tenant id
+   * @desc This method using to remove a directory from tenant storage.
+   * @param int $id tenant id
    * @param string $path
    * @return void
    */
-  public function removeTenantDirectory(int|string $id, string $path): void
+  public function removeTenantDirectory(int $id, string $path): void
   {
     Storage::disk($this->tenantDisk['name'])->deleteDirectory("{$this->tenantAliasName}{$id}/{$path}");
   }
 
   /**
-   * @desc This method using to remove a file from tenant.
-   * @param int|string $id tenant id
-   * @param string $full_path like the path or directory and full file name.
+   * @desc This method using to remove a file from tenant storage.
+   * @param int $id tenant id
+   * @param string $full_path the path or directory and full file name.
    * @return void
    */
-  public function deleteTenantFile(int|string $id, string $full_path): void
+  public function deleteTenantFile(int $id, string $full_path): void
   {
     Storage::disk($this->tenantDisk['name'])->delete("{$this->tenantAliasName}{$id}/{$full_path}");
   }
@@ -134,10 +138,10 @@ class TenantStorage extends TenantHelpers
   /**
    * @desc This method using to get file path from tenant files.
    * @param string $path
-   * @param int|string $id
+   * @param int $id
    * @return null|string
    */
-  public function getTenantFilePath(int|string $id, string $path): null|string
+  public function getTenantFilePath(int $id, string $path): null|string
   {
     $filePath = Storage::disk($this->tenantDisk['name'])->path("{$this->tenantAliasName}{$id}/{$path}");
     $shortPath = Str::after($filePath, Storage::disk($this->tenantDisk['name'])->path(''));
@@ -169,13 +173,13 @@ class TenantStorage extends TenantHelpers
 
   /**
    * @desc This method using to create a directory inside a tenant.
+   * @param int $id
    * @param string $path
-   * @param int|string $id
    * @return void
    */
-  public function createTenantDirectory(string $path, int|string $id): void
+  public function createTenantDirectory(int $id, string $path): void
   {
-    if (!$this->tenantDirectoryExists($id)) {
+    if (!$this->tenantStorageExists($id)) {
       Storage::disk($this->tenantDisk['name'])->makeDirectory("{$this->tenantAliasName}{$id}/{$path}");
     }
   }

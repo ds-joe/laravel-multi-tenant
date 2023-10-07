@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\Tenancy;
+namespace App\Services\Tenancy\Traits;
 
-class TenantHelpers
+trait TenantHelpers
 {
   # Aliases
   protected string $tenantAliasName = "tenant_";
