@@ -1,0 +1,48 @@
+<mxfile host="Electron" modified="2023-10-07T08:10:55.053Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.2 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="VT_m9ewUjWvvn8fDdsE4" version="22.0.2" type="device" pages="2">
+  <diagram name="Assets" id="9f46799a-70d6-7492-0946-bef42562c5a5">
+    <mxGraphModel dx="1266" dy="654" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <UserObject label="Table name ( System Table )" tooltip="hello&#xa;" id="4M7UUBKeH_7gtLSrfvq3-1">
+          <mxCell style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#d80073;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fontSize=12;strokeColor=#A50040;fontColor=#ffffff;connectable=1;allowArrows=1;treeFolding=0;treeMoving=0;comic=0;noLabel=0;portConstraintRotation=0;snapToPoint=0;fixDash=0;deletable=1;pointerEvents=1;moveCells=0;fixedWidth=0;autosize=0;" parent="1" vertex="1">
+            <mxGeometry x="73" y="107" width="320" height="104" as="geometry">
+              <mxRectangle x="540" y="230" width="70" height="30" as="alternateBounds" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="4M7UUBKeH_7gtLSrfvq3-29" value="-&amp;nbsp; unique column&amp;nbsp;&lt;b style=&quot;font-size: 12px;&quot;&gt;&lt;font color=&quot;#0066cc&quot; style=&quot;font-size: 12px;&quot;&gt;dataType&lt;/font&gt;&lt;/b&gt; default&amp;nbsp;" style="text;strokeColor=#d6b656;fillColor=#fff2cc;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=12;" parent="4M7UUBKeH_7gtLSrfvq3-1" vertex="1">
+          <mxGeometry y="26" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="4M7UUBKeH_7gtLSrfvq3-3" value="- table name &lt;b style=&quot;font-size: 12px;&quot;&gt;&lt;font color=&quot;#0066cc&quot; style=&quot;font-size: 12px;&quot;&gt;dataType&lt;/font&gt;&lt;/b&gt; default&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=12;" parent="4M7UUBKeH_7gtLSrfvq3-1" vertex="1">
+          <mxGeometry y="52" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="4M7UUBKeH_7gtLSrfvq3-28" value="- &lt;b style=&quot;font-size: 12px;&quot;&gt;col name&lt;/b&gt;&amp;nbsp;&lt;b style=&quot;font-size: 12px;&quot;&gt;&lt;font color=&quot;#0066cc&quot; style=&quot;font-size: 12px;&quot;&gt;relation col ➡️ &lt;/font&gt;&lt;font color=&quot;#99004d&quot; style=&quot;font-size: 12px;&quot;&gt;Relation Table&lt;/font&gt;&lt;/b&gt;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;" parent="4M7UUBKeH_7gtLSrfvq3-1" vertex="1">
+          <mxGeometry y="78" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="4M7UUBKeH_7gtLSrfvq3-30" value="Table name ( Company Table )" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#0050ef;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fontSize=12;strokeColor=#001DBC;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="426" y="107" width="320" height="104" as="geometry">
+            <mxRectangle x="540" y="230" width="70" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4M7UUBKeH_7gtLSrfvq3-31" value="-&amp;nbsp; unique column&amp;nbsp;&lt;b style=&quot;font-size: 12px;&quot;&gt;&lt;font color=&quot;#0066cc&quot; style=&quot;font-size: 12px;&quot;&gt;dataType&lt;/font&gt;&lt;/b&gt; default&amp;nbsp;" style="text;strokeColor=#d6b656;fillColor=#fff2cc;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=12;" parent="4M7UUBKeH_7gtLSrfvq3-30" vertex="1">
+          <mxGeometry y="26" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="4M7UUBKeH_7gtLSrfvq3-32" value="- table name &lt;b style=&quot;font-size: 12px;&quot;&gt;&lt;font color=&quot;#0066cc&quot; style=&quot;font-size: 12px;&quot;&gt;dataType&lt;/font&gt;&lt;/b&gt; default&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=12;" parent="4M7UUBKeH_7gtLSrfvq3-30" vertex="1">
+          <mxGeometry y="52" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="4M7UUBKeH_7gtLSrfvq3-33" value="- &lt;b style=&quot;font-size: 12px;&quot;&gt;col name&lt;/b&gt;&amp;nbsp;&lt;b style=&quot;font-size: 12px;&quot;&gt;&lt;font color=&quot;#0066cc&quot; style=&quot;font-size: 12px;&quot;&gt;relation col ➡️ &lt;/font&gt;&lt;font color=&quot;#99004d&quot; style=&quot;font-size: 12px;&quot;&gt;Relation Table&lt;/font&gt;&lt;/b&gt;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;" parent="4M7UUBKeH_7gtLSrfvq3-30" vertex="1">
+          <mxGeometry y="78" width="320" height="26" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="nycTXvFWejoKrCQYOf3b" name="Plan">
+    <mxGraphModel dx="1316" dy="556" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

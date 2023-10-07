@@ -89,7 +89,7 @@ class TenantDatabase extends Tenant
 
   /**
    * @desc This method using to create tenant database.
-   * @param string|number $id
+   * @param string|int $id
    * @return void
    */
   public function createNewCompanyDatabase(string|int $id): void
