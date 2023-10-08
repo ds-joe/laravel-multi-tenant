@@ -1,6 +1,6 @@
 # Tenancy Documentation
 
-### Tenant Database
+## Tenant Database
 
 - This trait provides a set of helper methods for managing tenant databases in Laravel.
 
@@ -64,7 +64,7 @@ The following example shows how to use the TenantDatabase trait to switch to a t
 $tenant = \Tenant::switchToTenantConnection(1);
 ```
 
-### Tenant Storage
+## Tenant Storage
 
 This trait provides a set of helper methods for managing tenant storage in Laravel.
 
@@ -143,7 +143,7 @@ The following example shows how to use the TenantStorage trait to put a file to 
 \Tenant::getTenantFilePath(1, 'uploads/my-file.jpg');
 ```
 
-### Tenant Domain
+## Tenant Domain
 
 This trait provides a set of helper methods for managing tenant domains in Laravel.
 
